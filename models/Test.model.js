@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-// TODO: Please make sure you edit the User model to whatever makes sense in this case
+const categories = ["Idiomas", "Historia", "Geografía", "Arte", "Ciencia", "Cine", "Matemáticas", "Deportes", "Informática", "Oposiciones", "Literatura", "Otros"]
 
 const OpcionSchema = new Schema({
     texto: { type: String, required: true }
@@ -20,6 +20,16 @@ const testSchema = new Schema(
             unique: true,
             lowercase: true,
             trim: true
+        },
+        descripcion: {
+            type: String,
+            trim: true
+        },
+        categoria: {
+            type: String,
+            trim: true,
+            required: true,
+            enum: categories
         },
         preguntas: [PreguntaSchema]
     },
